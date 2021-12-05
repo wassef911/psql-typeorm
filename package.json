@@ -6,8 +6,11 @@
   "scripts": {
     "postinstall": "husky install",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install",
     "lint": "eslint --max-warnings 0 --ext .js,ts src",
     "lint-staged-husky": "lint-staged",
+    "lint-prettier": "prettier --config .prettierrc --list-different '{src,test}/**/*.{ts,js,css,scss}'",
+    "prettier": "prettier --config .prettierrc --write './**/*.{ts,js,css,scss,json,md}'",
     "dev": "nodemon --watch './**/*.ts' --exec 'ts-node' src/index.ts"
   },
   "author": "",
