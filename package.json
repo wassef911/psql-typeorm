@@ -11,7 +11,7 @@
     "lint-staged-husky": "lint-staged",
     "lint-prettier": "prettier --config .prettierrc --list-different '{src,test}/**/*.{ts,js,css,scss}'",
     "prettier": "prettier --config .prettierrc --write './**/*.{ts,js,css,scss,json,md}'",
-    "dev": "nodemon --watch './**/*.ts' --exec 'ts-node' src/index.ts"
+    "dev": "bash close.sh &&nodemon --watch './**/*.ts' --exec 'ts-node' src/index.ts"
   },
   "author": "",
   "license": "ISC",
