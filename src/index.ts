@@ -1,9 +1,16 @@
-require('dotenv').config();
-import { createConnection } from "typeorm";
-import { Banker } from "./entities/banker";
-import { Client } from "./entities/client";
+import dotenv = require('dotenv');
+import { createConnection } from 'typeorm';
+
+import { Banker } from './entities/Banker';
+import { Client } from './entities/Client';
+import { Transactions } from './entities/Transactions';
+
+const ENTITIES = [Client, Banker, Transactions];
+
 (async () => {
+    dotenv.config();
     try {
+        console.log(process.env.PASS, " fancy stuff! "); // lazy to right it  
         await createConnection({
             type: 'postgres',
             host: 'localhost',
@@ -11,8 +18,8 @@ import { Client } from "./entities/client";
             username: 'postgres',
             password: process.env.PASS,
             database: 'test',
-            entities: [Client, Banker],
-            synchronize: true
+            entities: ENTITIES,
+            synchronize: true,
         });
     } catch (err) {
         console.log(err);
