@@ -1,4 +1,5 @@
 import dotenv = require('dotenv');
+import express, { application } from 'express';
 import { createConnection } from 'typeorm';
 
 import { Banker } from './entities/Banker';
@@ -6,11 +7,12 @@ import { Client } from './entities/Client';
 import { Transactions } from './entities/Transactions';
 
 const ENTITIES = [Client, Banker, Transactions];
+const PORT = process.env.PORT || 8080;
+const app = express();
 
 (async () => {
     dotenv.config();
     try {
-        console.log(process.env.PASS, " fancy stuff! "); // lazy to right it  
         await createConnection({
             type: 'postgres',
             host: 'localhost',
@@ -21,6 +23,10 @@ const ENTITIES = [Client, Banker, Transactions];
             entities: ENTITIES,
             synchronize: true,
         });
+        app.use(express.json())
+        app.listen(PORT, () => {
+            console.log("server running on " + PORT);
+        })
     } catch (err) {
         console.log(err);
     }

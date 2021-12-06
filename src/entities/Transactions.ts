@@ -1,9 +1,20 @@
-import { BaseEntity, Entity, Column, CreateDateColumn, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm';
+import {
+  BaseEntity,
+  Entity,
+  Column,
+  CreateDateColumn,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  JoinColumn,
+  ManyToMany,
+  JoinTable,
+} from 'typeorm';
+
 import { Client } from './Client';
 
 export enum TransactionTypes {
   DEPOSIT = 'desposit',
-  WITHDRAW = 'withdraw'
+  WITHDRAW = 'withdraw',
 }
 
 @Entity('client')
@@ -13,24 +24,29 @@ export class Transactions extends BaseEntity {
 
   @Column({
     type: 'enum',
-    enum: TransactionTypes
+    enum: TransactionTypes,
   })
   type: string;
 
   @Column({
-    type: 'numeric'
+    type: 'numeric',
   })
   amount: string;
+
+  @ManyToMany(() => Client)
+  @JoinTable({
+    name: 'bankers_clients',
+    joinColumn: { name: 'banker', referencedColumnName: 'id' },
+    inverseJoinColumn: { name: 'client', referencedColumnName: 'id' },
+  })
+  clients: Client[];
 
   @CreateDateColumn()
   created_at: Date;
 
-  @ManyToOne(
-    () => Client, client => client.transactions
-  )
-
+  @ManyToOne(() => Client, (client) => client.transactions)
   @JoinColumn({
-    name: 'client_id'
+    name: 'client_id',
   })
-  client: Client
+  client: Client;
 }
