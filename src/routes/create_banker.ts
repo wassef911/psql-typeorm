@@ -4,7 +4,7 @@ import { Banker } from '../entities/Banker';
 
 const router = express.Router();
 
-router.post('/api/banker', async (req, res) => {
+router.post('/banker', async (req, res) => {
     const {
         first_name,
         last_name,
@@ -26,4 +26,4 @@ router.post('/api/banker', async (req, res) => {
     return res.status(201).json(banker);
 });
 
-export { router as createbankerRouter };
+export { router as createBankerRouter };

@@ -18,7 +18,7 @@ export enum TransactionTypes {
 }
 
 @Entity('client')
-export class Transactions extends BaseEntity {
+export class Transaction extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 

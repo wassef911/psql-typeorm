@@ -2,12 +2,14 @@ import dotenv = require('dotenv');
 import express from 'express';
 import { createConnection } from 'typeorm';
 
-import { createClientRouter } from './routes/create_client';
 import { Banker } from './entities/Banker';
 import { Client } from './entities/Client';
-import { Transactions } from './entities/Transactions';
+import { Transaction } from './entities/Transactions';
+import { createClientRouter } from './routes/create_client';
+import { createBankerRouter } from './routes/create_banker';
 
-const ENTITIES = [Client, Banker, Transactions];
+
+const ENTITIES = [Client, Banker, Transaction];
 const PORT = process.env.PORT || 8080;
 const app = express();
 
@@ -26,6 +28,7 @@ const app = express();
         });
         app.use(express.json())
         app.use(createClientRouter)
+        app.use(createBankerRouter)
         app.listen(PORT, () => {
             console.log("server running on " + PORT);
         });
