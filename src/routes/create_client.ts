@@ -4,7 +4,7 @@ import { Client } from '../entities/Client';
 
 const router = express.Router();
 
-router.post('/api/client', async (req, res) => {
+router.post('/client', async (req, res) => {
     const {
         first_name,
         last_name,
