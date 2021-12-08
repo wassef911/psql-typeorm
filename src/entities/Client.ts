@@ -6,7 +6,9 @@ import { Person } from './utils/Person';
 
 @Entity('client')
 export class Client extends Person {
-  @Column({ type: 'numeric' })
+  @Column({
+    type: 'numeric', default: 25,
+  })
   balance: number;
 
   @Column({
@@ -17,7 +19,7 @@ export class Client extends Person {
   @Column({ type: 'simple-json' })
   additional_info: {
     age: number;
-    hari_color: string;
+    hair_color: string;
   };
 
   @Column({ type: 'simple-json' })
