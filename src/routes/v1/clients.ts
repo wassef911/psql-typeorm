@@ -4,13 +4,13 @@ import { list, show, create, update, destroy } from '../../controllers/client';
 
 const router = Router();
 
-router.get('/:id([0-9]+)', show);
+router.post('/', create);
 
 router.get('/', list);
 
-router.post('/', create);
+router.put('/:id([0-9]+)', update);
 
-router.patch('/:id([0-9]+)', update);
+router.get('/:id([0-9]+)', show);
 
 router.delete('/:id([0-9]+)', destroy);
 

@@ -1,52 +1,51 @@
 import {
-  BaseEntity,
   Entity,
   Column,
   CreateDateColumn,
+  UpdateDateColumn,
   PrimaryGeneratedColumn,
   ManyToOne,
   JoinColumn,
-  ManyToMany,
-  JoinTable,
+  BaseEntity,
 } from 'typeorm';
-
 import { Client } from './Client';
 
-export enum TransactionTypes {
-  DEPOSIT = 'desposit',
+export enum TransactionType {
+  DEPOSIT = 'deposit',
   WITHDRAW = 'withdraw',
 }
 
-@Entity('client')
+@Entity('transaction')
 export class Transaction extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column({
     type: 'enum',
-    enum: TransactionTypes,
+    enum: TransactionType,
   })
   type: string;
 
   @Column({
     type: 'numeric',
   })
-  amount: string;
+  amount: number;
 
-  @ManyToMany(() => Client)
-  @JoinTable({
-    name: 'bankers_clients',
-    joinColumn: { name: 'banker', referencedColumnName: 'id' },
-    inverseJoinColumn: { name: 'client', referencedColumnName: 'id' },
-  })
-  clients: Client[];
-
-  @CreateDateColumn()
-  created_at: Date;
-
-  @ManyToOne(() => Client, (client) => client.transactions)
+  @ManyToOne(
+    () => Client,
+    (client) => client.transactions,
+    {
+      onDelete: 'CASCADE',
+    }
+  )
   @JoinColumn({
     name: 'client_id',
   })
   client: Client;
+
+  @CreateDateColumn()
+  created_at: Date;
+
+  @UpdateDateColumn()
+  updated_at: Date;
 }

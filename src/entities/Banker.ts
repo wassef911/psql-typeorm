@@ -3,7 +3,7 @@ import { Client } from './Client';
 
 import { Person } from './utils/Person';
 
-@Entity('client')
+@Entity('banker')
 export class Banker extends Person {
   @Column({
     length: 10,

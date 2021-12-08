@@ -1,6 +1,11 @@
-import { BaseEntity, Entity, Column, CreateDateColumn, UpdateDateColumn, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  BaseEntity,
+} from 'typeorm';
 
-@Entity('client')
+@Entity()
 export class Person extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
@@ -16,12 +21,9 @@ export class Person extends BaseEntity {
   })
   email: string;
 
-  @Column({ unique: true, length: 10 })
+  @Column({
+    unique: true,
+    length: 10,
+  })
   card_number: string;
-
-  @CreateDateColumn()
-  created_at: Date;
-
-  @UpdateDateColumn()
-  updated_at: Date;
 }

@@ -1,16 +1,21 @@
 
 import { Request, Response, NextFunction } from 'express';
 import { getRepository } from 'typeorm';
+
 import { CustomError } from '../../utils/customError';
 import { Client } from '../../entities/Client';
+import { CustomSuccess } from '../../utils/customSuccess';
 
 export const show = async (req: Request, res: Response, next: NextFunction) => {
     const clientRepository = getRepository(Client);
+    const { id } = req.params;
 
     try {
-        // TO DO 
+        const client = await clientRepository.findOne(id);
+        const customSuccess = CustomSuccess('User data.', client);
+        return res.status(200).send(customSuccess)
     } catch (err) {
-        const customError = new CustomError(404, err.message);
-        return next(customError);
+        const customError = CustomError(err.message);
+        return res.status(404).send(customError);
     }
 };

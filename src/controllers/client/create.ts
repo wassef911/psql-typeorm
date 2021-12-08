@@ -1,8 +1,10 @@
 
 import { Request, Response, NextFunction } from 'express';
 import { getRepository } from 'typeorm';
-import { CustomError } from '../../utils/customError';
+
 import { Client } from '../../entities/Client';
+import { CustomError } from '../../utils/customError';
+import { CustomSuccess } from '../../utils/customSuccess';
 
 export const create = async (req: Request, res: Response, next: NextFunction) => {
     const {
@@ -24,9 +26,10 @@ export const create = async (req: Request, res: Response, next: NextFunction) =>
         });
 
         await clientRepository.save(client);
-        res.customSuccess(201, 'Client successfully created.', client);
+        const customSuccess = CustomSuccess('Client successfully created.', client);
+        return res.status(201).send(customSuccess)
     } catch (err) {
-        const customError = new CustomError(404, err.message);
-        return next(customError);
+        const customError = CustomError(err.message);
+        return res.status(404).send(customError);
     }
 };

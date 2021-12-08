@@ -1,5 +1,9 @@
-import { response, Response } from 'express';
+const CustomSuccess = (message: string, data?: any) => {
+  return {
+    error: false,
+    message,
+    data
+  };
+}
 
-response.customSuccess = function (httpStatusCode: number, message: string, data: any = null): Response {
-  return this.status(httpStatusCode).json({ message, data });
-};
+export { CustomSuccess };
