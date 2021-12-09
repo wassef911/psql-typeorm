@@ -9,7 +9,6 @@ import { CustomSuccess } from '../../utils/customSuccess';
 export const show = async (req: Request, res: Response, next: NextFunction) => {
     const bankerRepository = getRepository(Banker);
     const { id } = req.params;
-
     try {
         const banker = await bankerRepository.findOne(id);
         if (!banker) throw new Error("Banker not found.")

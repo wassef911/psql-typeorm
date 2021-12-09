@@ -11,7 +11,6 @@ export const list = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const bankers = await bankerRepository.find();
         const customSuccess = CustomSuccess('Bankers list.', bankers);
-
         return res.status(200).send(customSuccess)
     } catch (err) {
         const customError = CustomError(err.message);

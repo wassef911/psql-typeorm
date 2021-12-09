@@ -15,7 +15,6 @@ export const create = async (req: Request, res: Response, next: NextFunction) =>
         employee_number,
     } = req.body;
     const bankerRepository = getRepository(Banker);
-
     try {
         const banker = await bankerRepository.create({
             first_name,
@@ -24,7 +23,6 @@ export const create = async (req: Request, res: Response, next: NextFunction) =>
             card_number,
             employee_number,
         });
-
         await bankerRepository.save(banker);
         const customSuccess = CustomSuccess('Banker successfully created.', banker);
         return res.status(201).send(customSuccess)

@@ -2,7 +2,6 @@ import fs from 'fs';
 import path from 'path';
 import morgan from 'morgan';
 import { AddressInfo } from 'net'
-
 import dotenv = require('dotenv');
 import express from 'express';
 import { createConnection } from 'typeorm';

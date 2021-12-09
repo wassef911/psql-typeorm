@@ -1,33 +1,25 @@
-
 import { Request, Response, NextFunction } from 'express';
 import { getRepository } from 'typeorm';
 
 import { CustomError } from '../../utils/customError';
 import { Banker } from '../../entities/Banker';
+import { Client } from '../../entities/Client';
 import { CustomSuccess } from '../../utils/customSuccess';
 
 export const update = async (req: Request, res: Response, next: NextFunction) => {
     const bankerRepository = getRepository(Banker);
-    const {
-        first_name,
-        last_name,
-        email,
-        card_number,
-        employee_number,
-    } = req.body;
-    const { id } = req.params;
+    const clientRepository = getRepository(Client);
+    const { id_banker, id_client } = req.params;
+
     try {
-        let banker = await bankerRepository.findOne(id);
-        if (!banker) throw new Error("Banker not found.")
-        const bankerUpdated = await bankerRepository.save({
-            ...banker,
-            first_name,
-            last_name,
-            email,
-            card_number,
-            employee_number,
-        });
-        const customSuccess = CustomSuccess('Banker data updated.', bankerUpdated);
+        let banker = await bankerRepository.findOne(id_banker);
+        let client = await clientRepository.findOne(id_client);
+        if (!banker || !client) throw new Error("Banker or Client not found.");
+
+        banker.clients = [...banker.clients, client];
+        await bankerRepository.save(banker);
+
+        const customSuccess = CustomSuccess('Banker connected to client.', banker);
         return res.status(200).send(customSuccess)
     } catch (err) {
         const customError = CustomError(err.message);

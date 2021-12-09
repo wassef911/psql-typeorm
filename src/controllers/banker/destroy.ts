@@ -11,7 +11,8 @@ export const destroy = async (req: Request, res: Response, next: NextFunction) =
     const { id } = req.params;
 
     try {
-        const banker = await bankerRepository.findOne({ where: { id } });
+        const banker = await bankerRepository.findOne(id);
+
         if (!banker) throw new Error("Banker not found.");
         bankerRepository.delete(id)
 

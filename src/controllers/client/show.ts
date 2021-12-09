@@ -9,7 +9,6 @@ import { CustomSuccess } from '../../utils/customSuccess';
 export const show = async (req: Request, res: Response, next: NextFunction) => {
     const clientRepository = getRepository(Client);
     const { id } = req.params;
-
     try {
         const client = await clientRepository.findOne(id);
         if (!client) throw new Error("Client not found.")

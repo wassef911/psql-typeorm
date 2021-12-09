@@ -15,7 +15,6 @@ export const create = async (req: Request, res: Response, next: NextFunction) =>
         balance,
     } = req.body;
     const clientRepository = getRepository(Client);
-
     try {
         const client = await clientRepository.create({
             first_name,
@@ -24,7 +23,6 @@ export const create = async (req: Request, res: Response, next: NextFunction) =>
             card_number,
             balance,
         });
-
         await clientRepository.save(client);
         const customSuccess = CustomSuccess('Client successfully created.', client);
         return res.status(201).send(customSuccess)

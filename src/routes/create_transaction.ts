@@ -1,7 +1,7 @@
 
 import express from 'express';
 import { Client } from '../entities/Client';
-import { Transaction, TransactionTypes } from '../entities/Transactions';
+import { Transaction, TransactionType } from '../entities/Transactions';
 
 const router = express.Router();
 
@@ -19,7 +19,7 @@ router.post('/transaction/:client_id', async (req, res) => {
     })
 
     // is a deposit or a withdraw
-    client.balance = (type === TransactionTypes.DEPOSIT) ? client.balance + amount : client.balance - amount;
+    client.balance = (type === TransactionType.DEPOSIT) ? client.balance + amount : client.balance - amount;
 
     await client.save();
     await transaction.save();

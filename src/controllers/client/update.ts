@@ -16,25 +16,20 @@ export const update = async (req: Request, res: Response, next: NextFunction) =>
         balance,
     } = req.body;
     const { id } = req.params;
-
     try {
         let client = await clientRepository.findOne(id);
-
-        if (client) {
-            console.log(client.card_number);
-            const clientUpdated = await clientRepository.save({
-                ...client,
-                first_name,
-                last_name,
-                email,
-                card_number,
-                balance,
-            });
-
-            const customSuccess = CustomSuccess('Client data updated.', clientUpdated);
-            return res.status(200).send(customSuccess)
-        }
-        else throw new Error("Client not found.")
+        if (!client) throw new Error("Client not found.")
+        console.log(client.card_number);
+        const clientUpdated = await clientRepository.save({
+            ...client,
+            first_name,
+            last_name,
+            email,
+            card_number,
+            balance,
+        });
+        const customSuccess = CustomSuccess('Client data updated.', clientUpdated);
+        return res.status(200).send(customSuccess)
     } catch (err) {
         const customError = CustomError(err.message);
         return res.status(404).send(customError);
