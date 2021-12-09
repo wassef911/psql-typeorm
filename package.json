@@ -10,7 +10,7 @@
     "lint-staged-husky": "lint-staged",
     "lint-prettier": "prettier --config .prettierrc --list-different '{src,test}/**/*.{ts,js,css,scss}'",
     "prettier": "prettier --config .prettierrc --write './**/*.{ts,js,css,scss,json,md}'",
-    "dev": "bash close.sh &&nodemon --watch './**/*.ts' --exec 'ts-node' src/index.ts",
+    "start:dev": "nodemon --watch './**/*.ts' --exec 'ts-node' src/index.ts",
     "start": "ts-node src/index.ts"
   },
   "author": "",
@@ -35,6 +35,7 @@
     "eslint-plugin-no-array-reduce": "^1.0.36",
     "eslint-plugin-prettier": "^4.0.0",
     "husky": "^7.0.4",
+    "kill-port": "^1.6.1",
     "lint-staged": "^12.1.2",
     "ts-node-dev": "^1.1.8"
   }
