@@ -2,8 +2,8 @@
 import { Request, Response, NextFunction } from 'express';
 import { getRepository } from 'typeorm';
 
-import { CustomError } from '../../utils/customError';
 import { Client } from '../../entities/Client';
+import { CustomError } from '../../utils/customError';
 import { CustomSuccess } from '../../utils/customSuccess';
 
 export const update = async (req: Request, res: Response, next: NextFunction) => {
@@ -19,7 +19,6 @@ export const update = async (req: Request, res: Response, next: NextFunction) =>
     try {
         let client = await clientRepository.findOne(id);
         if (!client) throw new Error("Client not found.")
-        console.log(client.card_number);
         const clientUpdated = await clientRepository.save({
             ...client,
             first_name,

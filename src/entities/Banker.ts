@@ -1,6 +1,6 @@
 import { Entity, Column, ManyToMany, JoinTable, CreateDateColumn, UpdateDateColumn } from 'typeorm';
-import { Client } from './Client';
 
+import { Client } from './Client';
 import { Person } from './utils/Person';
 
 @Entity('banker')

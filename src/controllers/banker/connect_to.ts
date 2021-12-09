@@ -1,9 +1,9 @@
 import { Request, Response, NextFunction } from 'express';
 import { getRepository } from 'typeorm';
 
-import { CustomError } from '../../utils/customError';
 import { Banker } from '../../entities/Banker';
 import { Client } from '../../entities/Client';
+import { CustomError } from '../../utils/customError';
 import { CustomSuccess } from '../../utils/customSuccess';
 
 export const update = async (req: Request, res: Response, next: NextFunction) => {

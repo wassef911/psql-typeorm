@@ -2,8 +2,8 @@
 import { Request, Response, NextFunction } from 'express';
 import { getRepository } from 'typeorm';
 
-import { CustomError } from '../../utils/customError';
 import { Banker } from '../../entities/Banker';
+import { CustomError } from '../../utils/customError';
 import { CustomSuccess } from '../../utils/customSuccess';
 
 export const list = async (req: Request, res: Response, next: NextFunction) => {

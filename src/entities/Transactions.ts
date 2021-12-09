@@ -8,6 +8,7 @@ import {
   JoinColumn,
   BaseEntity,
 } from 'typeorm';
+
 import { Client } from './Client';
 
 export enum TransactionType {

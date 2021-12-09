@@ -1,9 +1,10 @@
 import fs from 'fs';
-import path from 'path';
-import morgan from 'morgan';
 import { AddressInfo } from 'net'
+import path from 'path';
+
 import dotenv = require('dotenv');
 import express from 'express';
+import morgan from 'morgan';
 import { createConnection } from 'typeorm';
 
 import { Banker } from './entities/Banker';
