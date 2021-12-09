@@ -12,12 +12,10 @@ export const destroy = async (req: Request, res: Response, next: NextFunction) =
 
     try {
         const client = await clientRepository.findOne({ where: { id } });
-        if (!client) {
-            throw new Error("client not found.")
-        }
+        if (!client) throw new Error("client not found.")
         clientRepository.delete(id)
 
-        const customSuccess = CustomSuccess('User successfully deleted.', client);
+        const customSuccess = CustomSuccess('Client successfully deleted.', client);
         return res.status(200).send(customSuccess)
     } catch (err) {
         const customError = CustomError(err.message);

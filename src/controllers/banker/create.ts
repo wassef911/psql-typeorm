@@ -2,7 +2,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { getRepository } from 'typeorm';
 
-import { Client } from '../../entities/Client';
+import { Banker } from '../../entities/Banker';
 import { CustomError } from '../../utils/customError';
 import { CustomSuccess } from '../../utils/customSuccess';
 
@@ -12,21 +12,21 @@ export const create = async (req: Request, res: Response, next: NextFunction) =>
         last_name,
         email,
         card_number,
-        balance,
+        employee_number,
     } = req.body;
-    const clientRepository = getRepository(Client);
+    const bankerRepository = getRepository(Banker);
 
     try {
-        const client = await clientRepository.create({
+        const banker = await bankerRepository.create({
             first_name,
             last_name,
             email,
             card_number,
-            balance,
+            employee_number,
         });
 
-        await clientRepository.save(client);
-        const customSuccess = CustomSuccess('Client successfully created.', client);
+        await bankerRepository.save(banker);
+        const customSuccess = CustomSuccess('Banker successfully created.', banker);
         return res.status(201).send(customSuccess)
     } catch (err) {
         const customError = CustomError(err.message);

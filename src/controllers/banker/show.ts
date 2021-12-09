@@ -3,17 +3,17 @@ import { Request, Response, NextFunction } from 'express';
 import { getRepository } from 'typeorm';
 
 import { CustomError } from '../../utils/customError';
-import { Client } from '../../entities/Client';
+import { Banker } from '../../entities/Banker';
 import { CustomSuccess } from '../../utils/customSuccess';
 
 export const show = async (req: Request, res: Response, next: NextFunction) => {
-    const clientRepository = getRepository(Client);
+    const bankerRepository = getRepository(Banker);
     const { id } = req.params;
 
     try {
-        const client = await clientRepository.findOne(id);
-        if (!client) throw new Error("Client not found.")
-        const customSuccess = CustomSuccess('Client data.', client);
+        const banker = await bankerRepository.findOne(id);
+        if (!banker) throw new Error("Banker not found.")
+        const customSuccess = CustomSuccess('Banker data.', banker);
         return res.status(200).send(customSuccess)
     } catch (err) {
         const customError = CustomError(err.message);
