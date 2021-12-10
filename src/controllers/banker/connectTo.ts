@@ -6,7 +6,7 @@ import { Client } from '../../entities/Client';
 import { CustomError } from '../../utils/customError';
 import { CustomSuccess } from '../../utils/customSuccess';
 
-export const update = async (req: Request, res: Response, next: NextFunction) => {
+export const connectTo = async (req: Request, res: Response, next: NextFunction) => {
     const bankerRepository = getRepository(Banker);
     const clientRepository = getRepository(Client);
     const { id_banker, id_client } = req.params;
