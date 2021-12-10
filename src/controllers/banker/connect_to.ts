@@ -10,7 +10,6 @@ export const update = async (req: Request, res: Response, next: NextFunction) =>
     const bankerRepository = getRepository(Banker);
     const clientRepository = getRepository(Client);
     const { id_banker, id_client } = req.params;
-
     try {
         let banker = await bankerRepository.findOne(id_banker);
         let client = await clientRepository.findOne(id_client);
