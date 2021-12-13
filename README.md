@@ -22,9 +22,6 @@ For development, you will only need Node.js and a node global package, Yarn, ins
       $ sudo apt install nodejs
       $ sudo apt install npm
 
-- #### Other Operating Systems
-  You can find more information about the installation on the [official Node.js website](https://nodejs.org/) and the [official NPM website](https://npmjs.org/).
-
 If the installation was successful, you should be able to run the following command.
 
     $ node --version
