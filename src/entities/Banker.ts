@@ -26,10 +26,4 @@ export class Banker extends Person {
     },
   })
   clients: Client[];
-
-  @CreateDateColumn()
-  created_at: Date;
-
-  @UpdateDateColumn()
-  updated_at: Date;
 }

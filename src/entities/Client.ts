@@ -30,11 +30,11 @@ export class Client extends Person {
   @Column({ type: 'simple-array', default: [] })
   family_members: string[];
 
-  @CreateDateColumn()
-  created_at: Date;
-
-  @UpdateDateColumn()
-  updated_at: Date;
+  @Column({
+    unique: true,
+    length: 10,
+  })
+  card_number: string;
 
   @ManyToMany((type) => Banker, {
     cascade: true,

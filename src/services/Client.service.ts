@@ -2,6 +2,8 @@
 import { getRepository } from 'typeorm';
 
 import { Client } from '../entities/Client';
+import { ClientInterface } from '../models/Client.inteface';
+
 
 export class ClientService {
     /**
@@ -18,17 +20,8 @@ export class ClientService {
      * create client
      * @returns {Promise}
      */
-    async create(clientToAdd: ClientMutation) {
+    async create(clientToAdd: ClientInterface) {
         const client = await this.clientRepository.create(clientToAdd);
         return await this.clientRepository.save(client);
     }
-}
-
-
-interface ClientMutation {
-    first_name: string;
-    last_name: string;
-    email: string;
-    card_number: number;
-    balance: number;
 }

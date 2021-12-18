@@ -5,10 +5,8 @@ import path from 'path';
 import dotenv = require('dotenv');
 import express from 'express';
 import morgan from 'morgan';
-import { createConnection } from 'typeorm';
 
-import { establishConnection } from 'config';
-
+import { establishConnection } from './config';
 import { Banker } from './entities/Banker';
 import { Client } from './entities/Client';
 import { Transaction } from './entities/Transactions';

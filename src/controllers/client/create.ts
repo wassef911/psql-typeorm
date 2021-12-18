@@ -1,29 +1,37 @@
 
 import { Request, Response, NextFunction } from 'express';
-import { getRepository } from 'typeorm';
 
-import { ClientService } from 'services/Client.service';
-
-import { Client } from '../../entities/Client';
+import { ClientService } from '../../services/Client.service';
 import { CustomError } from '../../utils/customError';
 import { CustomSuccess } from '../../utils/customSuccess';
 
-const ClientServiceInstance = new ClientService();
 export const create = async (req: Request, res: Response, next: NextFunction) => {
+    const ClientServiceInstance = new ClientService();
     const {
         first_name,
         last_name,
         email,
         card_number,
         balance,
+        is_active,
+        additional_info,
+        family_members,
+        created_at,
+        updated_at,
     } = req.body;
     try {
         const client = ClientServiceInstance.create({
+            id: null,
             first_name,
             last_name,
             email,
             card_number,
             balance,
+            is_active,
+            additional_info,
+            family_members,
+            created_at,
+            updated_at,
         })
         const customSuccess = CustomSuccess('Client successfully created.', client);
         return res.status(201).send(customSuccess)

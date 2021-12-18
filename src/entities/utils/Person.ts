@@ -3,6 +3,8 @@ import {
   PrimaryGeneratedColumn,
   Column,
   BaseEntity,
+  CreateDateColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 
 @Entity()
@@ -21,9 +23,9 @@ export class Person extends BaseEntity {
   })
   email: string;
 
-  @Column({
-    unique: true,
-    length: 10,
-  })
-  card_number: string;
+  @CreateDateColumn()
+  created_at: Date;
+
+  @UpdateDateColumn()
+  updated_at: Date;
 }
