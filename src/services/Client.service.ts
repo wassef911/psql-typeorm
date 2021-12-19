@@ -2,26 +2,40 @@
 import { getRepository } from 'typeorm';
 
 import { Client } from '../entities/Client';
-import { ClientInterface } from '../models/Client.inteface';
+
+import { GenericService } from './Generic.service';
 
 
-export class ClientService {
-    /**
-      * @description Create an instance of ClientService
-      */
-    clientRepository;
+/**
+  * @description Create an instance of ClientService to interact with the repository...
+  */
+export class ClientService extends GenericService<Client>{
+
+    repository;
     constructor() {
-        // Create instance of Data Access layer using our desired model
-        this.clientRepository = getRepository(Client);
+        super();
+        this.repository = getRepository(Client);
     }
 
-    /**
-     * @param client {object} Object containing all required fields to
-     * create client
-     * @returns {Promise}
-     */
-    async create(clientToAdd: ClientInterface) {
-        const client = await this.clientRepository.create(clientToAdd);
-        return await this.clientRepository.save(client);
+    create = async (clientToAdd: Client): Promise<Client> => {
+        const client = await this.repository.create(clientToAdd);
+        return await this.repository.save(client);
     }
+
+    list = async (page: number, take: number): Promise<Client[]> => {
+        return await this.repository.find({ take, skip: take * (page - 1) });
+    }
+
+    show = async (id: number): Promise<Client> => {
+        return this.repository.findOne(id);
+    }
+
+    update = async (clientToUpdate: Client): Promise<Client> => {
+        return await this.repository.save(clientToUpdate);
+    }
+
+    destroy = (id: number) => {
+        this.repository.delete(id);
+    }
+
 }
