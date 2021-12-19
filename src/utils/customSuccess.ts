@@ -1,5 +1,5 @@
 const CustomSuccess = (message: string, data?: any) => {
-  console.log(message);
+  console.log(message, data);
   return {
     error: false,
     message,

@@ -1,32 +1,17 @@
 
 import { Request, Response, NextFunction } from 'express';
-import { getRepository } from 'typeorm';
 
-import { Client } from '../../entities/Client';
+import { ClientService } from '../../services/Client.service';
 import { CustomError } from '../../utils/customError';
 import { CustomSuccess } from '../../utils/customSuccess';
 
 export const update = async (req: Request, res: Response, next: NextFunction) => {
-    const clientRepository = getRepository(Client);
-    const {
-        first_name,
-        last_name,
-        email,
-        card_number,
-        balance,
-    } = req.body;
-    const { id } = req.params;
+    const clientServiceInstance = new ClientService();
+    const id = parseInt(req.params.id);
     try {
-        let client = await clientRepository.findOne(id);
+        const client = await clientServiceInstance.show(id);
         if (!client) throw new Error("Client not found.")
-        const clientUpdated = await clientRepository.save({
-            ...client,
-            first_name,
-            last_name,
-            email,
-            card_number,
-            balance,
-        });
+        const clientUpdated = await clientServiceInstance.update(req.body);
         const customSuccess = CustomSuccess('Client data updated.', clientUpdated);
         return res.status(200).send(customSuccess)
     } catch (err) {

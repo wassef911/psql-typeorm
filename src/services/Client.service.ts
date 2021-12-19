@@ -22,7 +22,7 @@ export class ClientService extends GenericService<Client>{
         return await this.repository.save(client);
     }
 
-    list = async (page: number, take: number): Promise<Client[]> => {
+    list = async (page: number = 1, take: number = 1000): Promise<Client[]> => {
         return await this.repository.find({ take, skip: take * (page - 1) });
     }
 

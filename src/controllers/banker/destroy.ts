@@ -1,19 +1,17 @@
 
 import { Request, Response, NextFunction } from 'express';
-import { getRepository } from 'typeorm';
 
-import { Banker } from '../../entities/Banker';
+import { BankerService } from '../../services/Banker.service';
 import { CustomError } from '../../utils/customError';
 import { CustomSuccess } from '../../utils/customSuccess';
 
 export const destroy = async (req: Request, res: Response, next: NextFunction) => {
-    const bankerRepository = getRepository(Banker);
-    const { id } = req.params;
-
+    const bankerServiceInstance = new BankerService();
+    const id = parseInt(req.params.id);
     try {
-        const banker = await bankerRepository.findOne(id);
+        const banker = await bankerServiceInstance.show(id);
         if (!banker) throw new Error("Banker not found.");
-        bankerRepository.delete(id)
+        bankerServiceInstance.destroy(id)
         const customSuccess = CustomSuccess('Banker successfully deleted.', banker);
         return res.status(200).send(customSuccess)
     } catch (err) {

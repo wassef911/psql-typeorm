@@ -1,15 +1,16 @@
 
 import { Request, Response, NextFunction } from 'express';
-import { getRepository } from 'typeorm';
 
-import { Client } from '../../entities/Client';
+import { ClientService } from '../../services/Client.service';
 import { CustomError } from '../../utils/customError';
 import { CustomSuccess } from '../../utils/customSuccess';
 
 export const list = async (req: Request, res: Response, next: NextFunction) => {
-    const clientRepository = getRepository(Client);
+    const clientServiceInstance = new ClientService();
+    const page = (+req.query.page);
+    const perPage = (+req.query.perPage);
     try {
-        const clients = await clientRepository.find();
+        const clients = await clientServiceInstance.list(page, perPage);
         const customSuccess = CustomSuccess('Clients list.', clients);
         return res.status(200).send(customSuccess)
     } catch (err) {
