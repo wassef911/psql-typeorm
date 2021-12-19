@@ -9,7 +9,7 @@ import morgan from 'morgan';
 import { establishConnection } from './config';
 import { Banker } from './entities/Banker';
 import { Client } from './entities/Client';
-import { Transaction } from './entities/Transactions';
+import { Transaction } from './entities/Transaction';
 import routes from './routes';
 
 const ENTITIES = [Client, Banker, Transaction];

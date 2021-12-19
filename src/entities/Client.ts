@@ -1,7 +1,7 @@
 import { Entity, Column, OneToMany, ManyToMany, UpdateDateColumn, CreateDateColumn } from 'typeorm';
 
 import { Banker } from './Banker';
-import { Transaction } from './Transactions';
+import { Transaction } from './Transaction';
 import { Person } from './utils/Person';
 
 @Entity('client')
