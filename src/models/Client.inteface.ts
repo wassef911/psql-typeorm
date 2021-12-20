@@ -1,4 +1,4 @@
-import { PersonInterface } from "./person.interface";
+import { PersonInterface } from "./Person.interface";
 
 export interface ClientInterface extends PersonInterface {
     balance: string;
