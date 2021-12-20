@@ -1,0 +1,474 @@
+_type: export
+__export_format: 4
+__export_date: 2021-12-20T21:14:04.678Z
+__export_source: insomnia.desktop.app:v2021.5.3
+resources:
+  - _id: req_2974c2f19cbc4582adec6b3285a4d420
+    parentId: fld_af907d9cff8f4e93bec8341f47633a89
+    modified: 1640033642037
+    created: 1640033573275
+    url: "{{base_url}}/clients/15/transactions"
+    name: getTransactions
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1640033573275
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_af907d9cff8f4e93bec8341f47633a89
+    parentId: wrk_69fedc6323b34816a90501d42cf741cd
+    modified: 1639088615015
+    created: 1638963065389
+    name: client
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1638963065389
+    _type: request_group
+  - _id: wrk_69fedc6323b34816a90501d42cf741cd
+    parentId: null
+    modified: 1638962966713
+    created: 1638962966713
+    name: psql
+    description: ""
+    scope: collection
+    _type: workspace
+  - _id: req_e3f9f059e90743f3839f4d0445ff25ed
+    parentId: fld_af907d9cff8f4e93bec8341f47633a89
+    modified: 1639948501644
+    created: 1638963089835
+    url: "{{base_url}}/clients/13"
+    name: show
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1638963089835
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_bd66e9aae065474d9edd344dca4d0f2d
+    parentId: fld_af907d9cff8f4e93bec8341f47633a89
+    modified: 1639949236316
+    created: 1638995091886
+    url: "{{base_url}}/clients"
+    name: list
+    description: ""
+    method: GET
+    body: {}
+    parameters:
+      - id: pair_6637ac8120d94d09a877614672e680ce
+        name: page
+        value: "1"
+        description: ""
+      - id: pair_2df356c7588b4f7487887a3ac0e5e592
+        name: perPage
+        value: "6"
+        description: ""
+    headers: []
+    authentication: {}
+    metaSortKey: -1638963083959
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_6fa4b359c5cb41349960b9b6984f350f
+    parentId: fld_af907d9cff8f4e93bec8341f47633a89
+    modified: 1639948308680
+    created: 1638963078083
+    url: "{{base_url}}/clients"
+    name: create
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"first_name":"ahmed",	
+        	"last_name":"amiqne",
+        	"email":"waeff@mail.col",
+        	"card_number":"5367894",
+        	"balence":"3000"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_6bc7fdb6d8d047b2bc06a0858b37d368
+    authentication: {}
+    metaSortKey: -1638963078083
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_874235ecdcb3438f999718cd6945307d
+    parentId: fld_af907d9cff8f4e93bec8341f47633a89
+    modified: 1639090151241
+    created: 1638995747448
+    url: "{{base_url}}/clients/13"
+    name: update
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"first_name":"fredy",	
+        	"last_name":"lefleni",
+        	"email":"tddaqwessest@mail.col",
+        	"balance": 200,
+        	"card_number":12355456
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_6bc7fdb6d8d047b2bc06a0858b37d368
+    authentication: {}
+    metaSortKey: -1634568869704.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_8f90dad3a1ee45299cf662c7d1b31e2a
+    parentId: fld_af907d9cff8f4e93bec8341f47633a89
+    modified: 1639948490917
+    created: 1639090013538
+    url: "{{base_url}}/clients/13"
+    name: destroy
+    description: ""
+    method: DELETE
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"first_name":"wassweef",	
+        	"last_name":"lefleni",
+        	"email":"tddaqwessest@mail.col",
+        	"balance": 200,
+        	"card_number":12355456
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_6bc7fdb6d8d047b2bc06a0858b37d368
+    authentication: {}
+    metaSortKey: -1632371765515.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_3b6bef039a4243fa8f55a792150a3dad
+    parentId: fld_7c7e8b73c42f4e269831f86c3f86efd3
+    modified: 1639862548813
+    created: 1639090173821
+    url: "{{base_url}}/bankers/2"
+    name: show
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1638963089835
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_7c7e8b73c42f4e269831f86c3f86efd3
+    parentId: wrk_69fedc6323b34816a90501d42cf741cd
+    modified: 1639090173810
+    created: 1639090173810
+    name: banker
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1634440172856
+    _type: request_group
+  - _id: req_90ff4c95521945d082e285cb301463e1
+    parentId: fld_7c7e8b73c42f4e269831f86c3f86efd3
+    modified: 1639090226391
+    created: 1639090173822
+    url: "{{base_url}}/bankers"
+    name: list
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1638963083959
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_c2ae961a1414497ca7599d14813461c8
+    parentId: fld_7c7e8b73c42f4e269831f86c3f86efd3
+    modified: 1639862539791
+    created: 1639090173817
+    url: "{{base_url}}/bankers"
+    name: create
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"first_name":"wassef",	
+        	"last_name":"lefleni",
+        	"email":"tddassweeest@mail.col",
+        	"employee_number": 1515,
+        	"card_number":"123456",
+        	"balence":200
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_6bc7fdb6d8d047b2bc06a0858b37d368
+    authentication: {}
+    metaSortKey: -1638963078083
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_b1a9e1dd6e3448158d02de77b27cc1b1
+    parentId: fld_7c7e8b73c42f4e269831f86c3f86efd3
+    modified: 1639090231632
+    created: 1639090173823
+    url: "{{base_url}}/bankers/13"
+    name: update
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"first_name":"fredy",	
+        	"last_name":"lefleni",
+        	"email":"tddaqwessest@mail.col",
+        	"balance": 200,
+        	"card_number":12355456
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_6bc7fdb6d8d047b2bc06a0858b37d368
+    authentication: {}
+    metaSortKey: -1634568869704.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_f269c0fdf58349b9b7127b83fcfb97c3
+    parentId: fld_7c7e8b73c42f4e269831f86c3f86efd3
+    modified: 1639090234932
+    created: 1639090173823
+    url: "{{base_url}}/bankers/1"
+    name: destroy
+    description: ""
+    method: DELETE
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"first_name":"wassweef",	
+        	"last_name":"lefleni",
+        	"email":"tddaqwessest@mail.col",
+        	"balance": 200,
+        	"card_number":12355456
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_6bc7fdb6d8d047b2bc06a0858b37d368
+    authentication: {}
+    metaSortKey: -1632371765515.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_aeb24d441d0d44b48ff53d2985fc74bf
+    parentId: fld_058cb154991a46dc865442fa080bc3d4
+    modified: 1640032552938
+    created: 1640032488307
+    url: "{{base_url}}/transactions/2"
+    name: show
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1638963089835
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_058cb154991a46dc865442fa080bc3d4
+    parentId: wrk_69fedc6323b34816a90501d42cf741cd
+    modified: 1640032488302
+    created: 1640032488302
+    name: transactions
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1632178726589.5
+    _type: request_group
+  - _id: req_a2bc53b186d74682a504c2c449e0b715
+    parentId: fld_058cb154991a46dc865442fa080bc3d4
+    modified: 1640032550548
+    created: 1640032488308
+    url: "{{base_url}}/transactions"
+    name: list
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1638963083959
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_a502e548083940838535725b3e3fdd2a
+    parentId: fld_058cb154991a46dc865442fa080bc3d4
+    modified: 1640033476192
+    created: 1640032488305
+    url: "{{base_url}}/transactions/17"
+    name: create
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"type":"deposit",	
+        	"amount": 911
+        }
+    parameters:
+      - id: pair_c7cad019eb444281bac2009239e277a7
+        name: ""
+        value: ""
+        description: ""
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_6bc7fdb6d8d047b2bc06a0858b37d368
+    authentication: {}
+    metaSortKey: -1638963078083
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: env_22f386dcf14d3734d172370b50cfaf93f1d4af35
+    parentId: wrk_69fedc6323b34816a90501d42cf741cd
+    modified: 1638963110853
+    created: 1638962966717
+    name: Base Environment
+    data:
+      base_url: localhost:3000/api/v1
+    dataPropertyOrder:
+      "&":
+        - base_url
+    color: null
+    isPrivate: false
+    metaSortKey: 1638962966717
+    _type: environment
+  - _id: jar_22f386dcf14d3734d172370b50cfaf93f1d4af35
+    parentId: wrk_69fedc6323b34816a90501d42cf741cd
+    modified: 1638962966718
+    created: 1638962966718
+    name: Default Jar
+    cookies: []
+    _type: cookie_jar
+  - _id: spc_3ec31efba1534168841cd2e41a2ac3fc
+    parentId: wrk_69fedc6323b34816a90501d42cf741cd
+    modified: 1638962966715
+    created: 1638962966715
+    fileName: psql
+    contents: ""
+    contentType: yaml
+    _type: api_spec
+  - _id: env_890e63db32a7444fbe4cb311b7fbd1c5
+    parentId: env_22f386dcf14d3734d172370b50cfaf93f1d4af35
+    modified: 1640034657672
+    created: 1640034633411
+    name: DEV
+    data:
+      base_url: localhost:3000/api/v1
+    dataPropertyOrder:
+      "&":
+        - base_url
+    color: "#0096d6"
+    isPrivate: false
+    metaSortKey: 1640034633411
+    _type: environment
