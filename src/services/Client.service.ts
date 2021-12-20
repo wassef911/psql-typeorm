@@ -1,10 +1,10 @@
 
-import { getRepository } from 'typeorm';
+import { createQueryBuilder, getRepository } from 'typeorm';
 
 import { Client } from '../entities/Client';
+import { Transaction } from '../entities/Transaction';
 
 import { GenericService } from './Generic.service';
-
 
 /**
   * @description Create an instance of ClientService to interact with the repository...
@@ -36,6 +36,23 @@ export class ClientService extends GenericService<Client>{
 
     destroy = (id: number) => {
         this.repository.delete(id);
+    }
+
+    /**
+     * 
+     * @param clientId get client's transactions
+     */
+    getTransactions = async (clientId: number) => {
+        return await createQueryBuilder('client').select('client.first_name')
+            .from(Client, 'client')
+            .leftJoinAndSelect(
+                'client.transactions',
+                'transaction'
+            )
+            .where('client.id = :clientId', {
+                clientId
+            })
+            .getOne();
     }
 
 }

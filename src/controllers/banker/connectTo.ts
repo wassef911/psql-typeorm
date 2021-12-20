@@ -13,7 +13,6 @@ export const connectTo = async (req: Request, res: Response, next: NextFunction)
     const clientServiceInstance = new ClientService();
     const id_banker = parseInt(req.params.id_banker);
     const id_client = parseInt(req.params.id_client);
-
     try {
         const banker = await bankerServiceInstance.show(id_banker);
         const client = await clientServiceInstance.show(id_client);

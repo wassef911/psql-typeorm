@@ -10,10 +10,10 @@ import { CustomSuccess } from '../../utils/customSuccess';
 export const create = async (req: Request, res: Response, next: NextFunction) => {
     const transactionServiceInstance = new TransactionService();
     const clientServiceInstance = new ClientService();
-
     const { client_id } = req.params;
     const { type, amount } = req.body;
     try {
+        console.log(parseInt(client_id), req.params);
         const client = await clientServiceInstance.show(parseInt(client_id))
         if (!client) throw new Error("Client not found.")
         const transaction = await transactionServiceInstance.create({
