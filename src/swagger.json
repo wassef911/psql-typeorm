@@ -1,9 +1,0 @@
-{
-    "openapi": "3.0.0",
-    "info": {
-        "customCss":".swagger-ui .topbar { display: none }",
-        "version": "1.0.0",
-        "title": "Crudifing entities for fun.",
-        "description": "A postgres database example"
-    }
-}
