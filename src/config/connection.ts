@@ -1,8 +1,6 @@
-import dotenv = require('dotenv');
 import { createConnection } from 'typeorm';
 
-export const establishConnection = async (ENTITIES) => {
-    dotenv.config();
+export const establishDatabaseConnection = async (ENTITIES) => {
     await createConnection({
         type: 'postgres',
         host: process.env.POSTGRES_HOST || 'localhost',
